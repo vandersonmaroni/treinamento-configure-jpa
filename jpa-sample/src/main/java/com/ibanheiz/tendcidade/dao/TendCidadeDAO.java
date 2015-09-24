@@ -13,7 +13,6 @@ public class TendCidadeDAO extends DAO<TendCidade> {
 
 	@SuppressWarnings("unchecked")
 	public List<TendCidade> buscarCidadePorUf(TendUf uf) {
-		entityManager = criarEntityManager();
 		Query query = entityManager.createQuery("SELECT cidades FROM TendCidade cidades WHERE cidades.tendUf = :uf");
 		query.setParameter("uf", uf);
 		return query.getResultList();

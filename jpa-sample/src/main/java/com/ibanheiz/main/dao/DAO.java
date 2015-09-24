@@ -1,10 +1,11 @@
 package com.ibanheiz.main.dao;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 /**
  * Geneŕicao
@@ -14,15 +15,24 @@ import javax.persistence.Persistence;
 public class DAO<T> implements Serializable {
 	private static final long serialVersionUID = 3042466744415667858L;
 	
-	private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("nicogostoso");
+//	private static EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("nicogostoso");
+//	protected EntityManager entityManager;
+
+	private final Class<T> classe;
+	
+	@Inject
 	protected EntityManager entityManager;
+	
+	@SuppressWarnings("unchecked")
+	public DAO() {
+		this.classe = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[0];
+	}
 	
 	/**
 	 * @author Nicolas Ibanheiz | 22/09/2015
 	 * @param objeto
 	 */
 	public void save(T objeto) {
-		entityManager = criarEntityManager();
 		entityManager.getTransaction().begin();
 		try {
 			entityManager.persist(objeto);
@@ -32,10 +42,16 @@ public class DAO<T> implements Serializable {
 			e.printStackTrace();
 			entityManager.getTransaction().rollback();
 		}
-		entityManager.close();
 	}
+	
+	// TODO update
+	
+	// TODO delete
+	
+	// TODO Find by id
 
-	protected EntityManager criarEntityManager() {
-		return entityManagerFactory.createEntityManager();
+	@SuppressWarnings("rawtypes")
+	public List buscarTodos() {
+		return entityManager.createQuery("FROM " + classe.getSimpleName()).getResultList();
 	}
 }

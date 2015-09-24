@@ -1,14 +1,19 @@
 package com.ibanheiz.tenduf.model;
 
 import java.io.Serializable;
+import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 import com.ibanheiz.model.TendAliquotaIcm;
 import com.ibanheiz.model.TendCidade;
 import com.ibanheiz.model.TendRegiao;
-
-import java.util.List;
 
 /**
  * The persistent class for the tend_uf database table.
@@ -39,13 +44,13 @@ public class TendUf implements Serializable {
 	private List<TendAliquotaIcm> tendAliquotaIcms2;
 
 	// bi-directional many-to-one association to TendCidade
-	@OneToMany(mappedBy = "tendUf")
+	@OneToMany(mappedBy = "tendUf", fetch=FetchType.LAZY)
 	private List<TendCidade> tendCidades;
 
 	// bi-directional many-to-one association to TendRegiao
 	@OneToMany(mappedBy = "tendUf")
 	private List<TendRegiao> tendRegiaos;
-
+	
 	public TendUf() {
 	}
 
@@ -118,6 +123,10 @@ public class TendUf implements Serializable {
 	}
 
 	public List<TendCidade> getTendCidades() {
+//		if (tendCidades instanceof PersistentBag) {
+//			TendCidadeService service = BeanInjector.getBean(TendCidadeService.class);
+//			tendCidades = service.buscarCidadePorUf(this);
+//		}
 		return this.tendCidades;
 	}
 
@@ -194,6 +203,11 @@ public class TendUf implements Serializable {
 		} else if (!uf.equals(other.uf))
 			return false;
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return "OI GOKU, EU SOU UMA UF NORMAL";
 	}
 
 }
