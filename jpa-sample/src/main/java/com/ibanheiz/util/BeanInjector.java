@@ -39,7 +39,7 @@ public class BeanInjector implements Serializable {
 		BeanManager beanManager = getBeanManager();
 
 		if (beanManager != null) {
-			Set<Bean<?>> beans = beanManager.getBeans(classe);
+		Set<Bean<?>> beans = beanManager.getBeans(classe);
 
 			if (beans != null && !beans.isEmpty()) {
 				Bean<T> bean = (Bean<T>) beanManager.getBeans(classe).iterator().next();

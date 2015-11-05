@@ -1,0 +1,14 @@
+<datasource jndi-name="java:/jpacmt" pool-name="jpacmt"
+	enabled="true" use-java-context="true">
+	<connection-url>jdbc:mysql://localhost:3306/jpacmt</connection-url>
+	<driver>com.mysql</driver>
+	<pool>
+		<min-pool-size>0</min-pool-size>
+		<max-pool-size>5</max-pool-size>
+		<prefill>true</prefill>
+	</pool>
+	<security>
+		<user-name>user</user-name>
+		<password>password</password>
+	</security>
+</datasource>

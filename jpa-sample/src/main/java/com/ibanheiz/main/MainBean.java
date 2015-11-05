@@ -37,17 +37,18 @@ public class MainBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-		uf.setUf("WQ");
+		uf.setUf("II");
 		uf.setCodigoIbge(45345);
 		uf.setEstado("Cuzinho do marcos");
 		cidade.setIdCidade(500);
+		service.save(uf);
 
-		ufEncontrada = service.buscarTodas();
-		for (TendUf tendUf : ufEncontrada) {
-			System.out.println(tendUf.getUf());
-		}
-		
-		buscarCidadesDaUf();
+//		ufEncontrada = service.buscarTodas();
+//		for (TendUf tendUf : ufEncontrada) {
+//			System.out.println(tendUf.getUf());
+//		}
+//		
+//		buscarCidadesDaUf();
 	}
 
 	public void buscarCidadesDaUf() {

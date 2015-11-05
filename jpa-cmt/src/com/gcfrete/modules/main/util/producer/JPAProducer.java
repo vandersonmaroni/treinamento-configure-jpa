@@ -1,4 +1,4 @@
-package com.ibanheiz.util;
+package com.gcfrete.modules.main.util.producer;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
@@ -6,19 +6,17 @@ import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceUnit;
 
+@ApplicationScoped
 public class JPAProducer {
 	
-	@Produces
-	@ApplicationScoped
-	public EntityManagerFactory criarFactory() {
-		return Persistence.createEntityManagerFactory("nicogostoso");
-	}
+	@PersistenceUnit
+	private EntityManagerFactory factory;
 	
 	@Produces
 	@RequestScoped
-	public EntityManager criarEntityManager(EntityManagerFactory factory) {
+	public EntityManager criarEntityManager() {
 		return factory.createEntityManager();
 	}
 	

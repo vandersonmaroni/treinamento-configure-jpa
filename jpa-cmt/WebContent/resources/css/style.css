@@ -1,0 +1,72 @@
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 0.9em;
+	color: #333333;
+	background-color: #F3F3F3;
+}
+
+.ajax-status {
+	position: fixed;
+	right: 33px;
+	bottom: 55px;
+	z-index: 12000;
+}
+
+#container-geral {
+	position: relative;
+	width: 100%;
+}
+
+#div-centro {
+	width: 320px;
+	height: 320px;
+	margin: 16px;
+	padding: 16px;
+	left: 50%;
+	position: absolute;
+	transform: translateX(-50%);
+	background-color: #E9E9E9;
+}
+
+.label-titulo {
+	font-size: 1.125rem;
+	line-height: 1.5rem;
+}
+
+.label-default {
+	padding-left: 2px;
+	line-height: 1.5em;
+}
+
+.input-default {
+	width: 96%;
+}
+
+.footer {
+	bottom: 0;
+	height: 60px;
+	width: 100%;
+	position: absolute;
+	background-color: #000;
+}
+
+.menu {
+	height: 60px;
+	width: 100%;
+	background-color: #000;
+}
+
+.botao {
+	margin: 20px 15px 0 0;
+}
+
+.label-ajuda {
+	background-color: #ff0000;
+}

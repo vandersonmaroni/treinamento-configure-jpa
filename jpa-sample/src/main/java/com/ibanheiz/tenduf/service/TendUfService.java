@@ -22,7 +22,7 @@ public class TendUfService implements Serializable {
 	public TendUf buscarTendUfPorCidade(TendCidade cidade) {
 		return tendUfDAO.buscarTendUfPorCidade(cidade);
 	}
-
+	
 	@SuppressWarnings("unchecked")
 	public List<TendUf> buscarTodas() {
 		return tendUfDAO.buscarTodos();
