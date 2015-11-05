@@ -12,16 +12,13 @@ import com.gcfrete.modules.main.util.logger.GcLogger;
 public class DAO<T> implements Serializable {
 	private static final long serialVersionUID = -1346304670895222289L;
 
-	private Class<T> classe;
+	private final Class<T> classe;
 
 	@Inject
 	protected EntityManager entityManager;
 
 	@Inject
 	protected GcLogger logger;
-
-	public DAO() {
-	}
 
 	public DAO(Class<T> classe) {
 		this.classe = classe;

@@ -13,6 +13,10 @@ import com.gcfrete.modules.usuario.model.UsuarioNull;
 @Stateless
 public class UsuarioDAO extends DAO<Usuario> implements Serializable {
 	private static final long serialVersionUID = 6781763194725497891L;
+	
+	public UsuarioDAO() {
+		super(Usuario.class);
+	}
 
 	/**
 	 * @author Marcos Toledo | 05/11/2015
