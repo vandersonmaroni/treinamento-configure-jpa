@@ -23,9 +23,8 @@ public class DAO<T> implements Serializable {
 	public DAO() {
 	}
 
-	public DAO(Class<T> classe, EntityManager entityManager) {
+	public DAO(Class<T> classe) {
 		this.classe = classe;
-		this.entityManager = entityManager;
 	}
 
 	public void save(T entity) {
