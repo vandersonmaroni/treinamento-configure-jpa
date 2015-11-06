@@ -9,6 +9,10 @@ import javax.persistence.EntityManager;
 import com.gcfrete.modules.main.util.annotation.Transacional;
 import com.gcfrete.modules.main.util.logger.GcLogger;
 
+/**
+ * Interceptor transacional
+ * @author Marcos Toledo | 06/11/2015
+ */
 @Interceptor
 @Transacional
 public class TransacionalInterceptor {
@@ -23,14 +27,11 @@ public class TransacionalInterceptor {
 	public Object intercept(InvocationContext ctx) {
 		Object resultado = null;
 		try {
-			entityManager.getTransaction().begin();
+			entityManager.joinTransaction();
 			resultado = ctx.proceed();
-			entityManager.getTransaction().commit();
 		} catch (Exception e) {
-			entityManager.getTransaction().rollback();
 			logger.fatal("Erro no commit da transação", e);
 		}
-		
 		return resultado;
 	}
 }
